@@ -15,19 +15,13 @@ class Student < ActiveRecord::Base
   has_many :classrooms, through: :classroom_students
 
   def self.search(name)
-    # puts "search students for : #{name}"
     students = []
     if name == ""
-      # puts "Return all students"
       students = Student.all
     else
-      # puts "Check for name : #{name}"
       Student.all.each do |student|
-        # puts "check student #{student.name}"
         if student.name.downcase.include?(name.downcase)
-          # puts "Student '#{student.name}' includes '#{name}'"
           students << student
-          # puts "Update array : #{students}"
         end
       end
     end
